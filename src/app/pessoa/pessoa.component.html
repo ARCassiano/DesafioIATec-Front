@@ -1,0 +1,52 @@
+<div class="container-fluid">
+
+  <form class="pessoa-form" *ngIf="pessoa">
+    <div class="row">
+      
+      <div class="col-md-6">
+        <mat-form-field class="col-md-12">
+          <input matInput placeholder="Nome" name="nome" [(ngModel)]="pessoa.nome">
+        </mat-form-field>
+      </div>
+  
+      <div class="col-md-3">
+        <mat-form-field class="CPF col-md-12">
+            <input matInput placeholder="CPF" name="cpf" [(ngModel)]="pessoa.cpf">
+        </mat-form-field>
+      </div>
+  
+      <div class="col-md-3">
+        <mat-form-field class="col-md-12">
+          <input matInput [matDatepicker]="picker" placeholder="Data de aniversário" name="dataNascimento" [(ngModel)]="pessoa.dataNascimento">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+    </div>
+  
+    <div class="row col-md-12">
+      <mat-tab-group class="col-md-12">
+        <mat-tab label="Endereço" class="col-md-12">
+          <app-enderecos [enderecos]="pessoa.enderecos" class="col-md-12"></app-enderecos>
+        </mat-tab>
+        <mat-tab label="Telefone" class="col-md-12">
+          <app-telefones [telefones]="pessoa.telefones" class="col-md-12"></app-telefones>    
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+
+    <div class="col-md-12">
+      <div class="col-md-1 float-right">
+        <button mat-raised-button (click)="save()" color="primary"  class="col-md-12">
+          Salvar
+        </button>
+      </div>
+      <div class="col-md-1 float-right">
+        <button mat-raised-button (click)="goBack()" class="col-md-12">
+          Voltar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

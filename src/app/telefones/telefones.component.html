@@ -1,0 +1,32 @@
+<mat-list *ngIf="telefones">
+  <h3 mat-subheader>Telefones</h3>
+  <mat-list-item *ngFor="let telefone of telefones; last as last">
+    <mat-list-item class="row col-md-12">
+      
+      <div class="col-md-3">
+        <mat-form-field class="col-md-12" [floatLabel]="options.value.floatLabel">
+          <input matInput placeholder="DDI" name="ddi" [(ngModel)]="telefone.ddi">
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field class="col-md-12" [floatLabel]="options.value.floatLabel">
+          <input matInput placeholder="Número" name="numero" [(ngModel)]="telefone.numero">
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-4">
+        <mat-form-field class="col-md-12" [floatLabel]="options.value.floatLabel">
+          <input matInput placeholder="Operadora" name="operadora" [(ngModel)]="telefone.operadora">
+        </mat-form-field>
+      </div>
+      
+      <div class="col-md-1">
+        <a mat-raised-button *ngIf="telefone.id > 0" (click)="removeTelefone(telefone)" color="warn">
+          <mat-icon mat-list-icon>delete</mat-icon>
+        </a>
+      </div>
+    </mat-list-item>
+     <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+  </mat-list-item>
+</mat-list>
